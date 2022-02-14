@@ -16,7 +16,7 @@
         <script type="text/jsx">
             var testing = "Blah Blah Blah";
             var myTasks = [1, 9, 15];
-	    var theTasks = ["Blah 1", "Blah 2", "Blah 3"];
+	         var theTasks = ["Blah 1", "Blah 2", "Blah 3"];
 
             var AllTasks = React.createClass({
                 getInitialState: function() {
@@ -53,16 +53,10 @@
                     this.setState({ tasksCanRemove: this.props.theTasks.map( (val) => val)});
                     console.log("RemoveTasks - component did mount - this.tasksCanRemove=", this.state.tasksCanRemove);
                 },
-                // removeTaskHandleDelete: function(e) {
-                //     console.log("Deleting e= ", e);
-                //     console.log("Deleting myTasks =", myTasks);
-                //     const taskToDelete = e.target.innerHTML;
-                //     this.props.handleDelete(taskToDelete);
-                // },
                 handleRemoveTask: function() {
                     var taskToDelete = document.getElementById("delete-drop-down").value;
                     var indexToDelete = this.state.tasksCanRemove.indexOf(taskToDelete);
-                    alert("indexToDelete:" + (indexToDelete || ""));
+                    console.log("indexToDelete:" + (indexToDelete || ""));
                     var newTaskList = this.state.tasksCanRemove.slice(0, indexToDelete).concat(this.state.tasksCanRemove.slice(indexToDelete + 1));
                     console.log("newTaskList:", newTaskList);
                     this.setState({ tasksCanRemove: newTaskList });
@@ -74,8 +68,9 @@
                             <hr />
                             :: Remove tasks
                             <br />
+                            <div style={{visibility: 'hidden'}}>
                             { this.state.tasksCanRemove }
-
+                            </div>
                             <select id="delete-drop-down">
                                 {
                                     this.state.tasksCanRemove.map(function(val) {
@@ -88,7 +83,6 @@
                     );
                 }
             });
-                            // <button id='delete-button' onClick={this.props.handleDelete()}>Remove</button>
 
             var NewTaskBox = React.createClass({
                 handleMyChange: function(event) {
@@ -100,11 +94,8 @@
 
 
                     if(newTaskValue) {
-		        theTasks.push(newTaskValue);
-		        this.props.myTasksChanged(theTasks);
-                        //this.setState({
-                        //   currentTasks: this.state.currentTasks.concat([newTaskValue])
-                        //});
+		                theTasks.push(newTaskValue);
+		                this.props.myTasksChanged(theTasks);
                     }
                 },
                 componentDidMount: function() {
@@ -128,7 +119,7 @@
                     return { currentTasks: theTasks};
                 },
                 parentHandleDelete: function(taskToDelete) {
-                    alert("Parent delete handler - val = " + taskToDelete);
+                    console.log("Parent delete handler - val = " + taskToDelete);
                     var delIndex = this.state.currentTasks.indexOf(taskToDelete);
                     console.log("Deleting - delIndex  = ", delIndex);
                     const newTaskList = [];
@@ -141,9 +132,7 @@
                     this.setState({currentTasks: newTaskList});
                 },
                 handleMyTasksChanged: function(newTasks) {
-                    /// theTasks = newTasks;
                     this.setState({currentTasks: newTasks});
-                    /// alert("ToDo - handleMyTaskschanged");
                 },
                 render: function() {
                     return (
