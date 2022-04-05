@@ -18,20 +18,31 @@
     } else {
       $clean_msg = mysqli_real_escape_string($mysqli_conn, $newMessage);
       $clean_priority = mysqli_real_escape_string($mysqli_conn, $newPriority);
-      $sql = "insert into to_do_items (message, priority, created_at) values ('" . $clean_msg . "', '" . $clean_priority . "', now())";
-      $res = mysqli_query($mysqli_conn, $sql);
+      ///$sql = "insert into to_do_items (message, priority, created_at) values ('" . $clean_msg . "', '" . $clean_priority . "', now())";
+      ///$res = mysqli_query($mysqli_conn, $sql);
+
+
+      $sql = "insert into to_do_items (message, priority, created_at) values (?, ?, now())";
+      $stmt = mysqli_prepare($mysqli_conn, $sql);
+      mysqli_stmt_bind_param($stmt, "ss", $newMessage, $newPriority);
+      mysqli_stmt_execute($stmt);
+
+
 
       $insertId = $mysqli_conn->insert_id;
       echo "<input type='hidden' name='insertId' value='" . $insertId . "' />";
 
+      /*
       if ($res === TRUE) {
           echo "A new record has been added";
       } else {
         printf("Could not add record: %s\n", mysqli_error($mysqli_conn));
       }
+      */
     }
 
     // mysqli_free_result($res);
+    mysqli_stmt_close($stmt);
     mysqli_close($mysqli_conn);
         ?>
 
