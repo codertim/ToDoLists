@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Add New To Do Item</title>
+    </head>
+    <body style="background-color: #E45826;">
+        <h1>Add New To Do Item</h1>
+        <div>
+            <form method="post" action="add.php" id="add-form">
+                <div style="margin: 20px 10px;">
+                    <label>Message:</label>
+                    <input type="text" name="message" />
+                </div>
+                <div style="margin: 20px 10px;">
+                    <label>Priority:</label>
+                    <select name="priority">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" select>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </form>
+            <input type="submit" form="add-form" value="Add" style="background-color: #E6D5B8;" />
+        </div>
+    </body>
+</html>
