@@ -1,6 +1,7 @@
 <script>
 	import { Route, Router } from 'svelte-routing';
 	import Items from './Items/Items.svelte';
+	import CreateItem from './Items/CreateItem.svelte';
 	export let url = '';
 </script>
 
@@ -9,6 +10,7 @@
 		<h1>To Do</h1>
 		<Route path="/add/">
 			<h2>Add</h2>
+			<CreateItem />
 		</Route>
 		<Route path="/">
 			<Items />
