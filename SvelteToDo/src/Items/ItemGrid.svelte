@@ -6,16 +6,24 @@
 </script>
 
 <style>
+    #all-items {
+        background-color: var(--colorOrange);
+        padding: 30px;
+    }
+
+    .delete-item {
+        color: #ff0000;
+    }
 </style>
 
 <div>
     <h3>To Do Items</h3>
-    <div>
+    <div id="all-items">
         <!-- items: {items} -->
         <ul>
 
         {#each items as item}
-          <li>Item: {item.message || ''} <a href="/#" on:click={() => onClick(item.message)}>X</a></li>
+          <li>Item: {item.message || ''} &nbsp; <a href="/#" class="delete-item" on:click={() => onClick(item.message)}>X</a></li>
         {/each}
         </ul>
 

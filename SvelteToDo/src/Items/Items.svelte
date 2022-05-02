@@ -9,7 +9,8 @@
         items = items.filter(item => item.message != msg);
     }
 </script>
-<style></style>
+<style>
+</style>
 <div>
     <Button>Add</Button>
     <ItemGrid items={items} onClick={handleItemSelectDelete} />
