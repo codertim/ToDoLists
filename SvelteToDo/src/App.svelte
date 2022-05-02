@@ -7,7 +7,7 @@
 <Router {url}>
 	<main>
 		<h1>To Do</h1>
-		<Route path="/add">
+		<Route path="/add/">
 			<h2>Add</h2>
 		</Route>
 		<Route path="/">

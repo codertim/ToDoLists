@@ -1,6 +1,7 @@
 <script>
     import ItemGrid from './ItemGrid.svelte';
     import Button from '../common/Button.svelte';
+    import { links } from 'svelte-routing';
 
     let items = [{message: 'Test1'}, {message: 'Test2'}];
 
@@ -12,7 +13,8 @@
 <style>
 </style>
 <div>
-    <Button>Add</Button>
+    <Button>Delete Me</Button>
+    <a href="/add/" use:links>Add</a>
     <ItemGrid items={items} onClick={handleItemSelectDelete} />
 </div>
 
