@@ -3,6 +3,16 @@
 	import Items from './Items/Items.svelte';
 	import CreateItem from './Items/CreateItem.svelte';
 	export let url = '';
+
+	let items = [{message: 'Test1'}, {message: 'Test2'}];
+
+	
+    function handleItemAdd(itemText) {
+        console.log("##### handleItemAdd - starting - itemText:", itemText);
+		if (itemText) {
+			items.push({ message: itemText});
+		}
+	}
 </script>
 
 <Router {url}>
@@ -10,10 +20,10 @@
 		<h1>To Do</h1>
 		<Route path="/add/">
 			<h2>Add</h2>
-			<CreateItem />
+			<CreateItem  onItemAdd={handleItemAdd} />
 		</Route>
 		<Route path="/">
-			<Items />
+			<Items items={items} />
 		</Route>
 		<p style="margin-top: 10rem;">Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	</main>
