@@ -17,14 +17,22 @@
 </script>
 
 <style>
+    .add-stuff a {
+        text-decoration: none;
+    }
 
+    .add-stuff a:hover {
+        border-bottom: 5px solid #0000FF;
+    }
 </style>
 
 <div>
     Enter stuff to do:
-    <div>
+    <div class="add-stuff">
         <input type="text" on:input={handleInputForItem} value={item} />
+        <br />
         <a href="#" on:click={handleAdd}>Add</a>
+        |
         <a href="/" use:links>Cancel</a>
     </div>
 

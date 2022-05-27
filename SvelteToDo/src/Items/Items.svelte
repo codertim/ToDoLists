@@ -3,7 +3,7 @@
     import Button from '../common/Button.svelte';
     import { links } from 'svelte-routing';
 
-    let items = [{message: 'Test1'}, {message: 'Test2'}];
+    export let items = [];
 
     function handleItemSelectDelete(msg) {
         console.log("##### handleClickDelete - starting - msg:", msg);
