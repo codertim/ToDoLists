@@ -20,7 +20,7 @@ function App() {
         </a>
       </header>
 
-      <ToDoList />
+      <ToDoList headervalue="My Do Do List"><div>Hello There!</div></ToDoList>
     </div>
   );
 }
