@@ -1,11 +1,13 @@
 import React from "react";
 
-class NewTaskBox extends React.Componet {
+class NewTaskBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             tasks: []
         }
+
+        this.handleMyChange = this.handleMyChange.bind(this);
     }
 
     handleMyChange(event) {

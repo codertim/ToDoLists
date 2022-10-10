@@ -1,5 +1,7 @@
 import React from "react";
+import AllTasks from "./AllTasks";
 import NewTaskBox from "./NewTaskBox";
+import RemoveTasks from "./RemoveTasks";
 import "./ToDoList.css";
 
 ///function ToDoList(props) {
@@ -10,6 +12,7 @@ class ToDoList extends React.Component {
             header: '>>> ',
             currentTasks: []
         }
+        this.handleMyTasksChanged = this.handleMyTasksChanged.bind(this);
     }
 
     parentHandleDelete(taskToDelete) {
