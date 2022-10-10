@@ -9,10 +9,11 @@ class ToDoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            header: '>>> ',
+            header: '>> ',
             currentTasks: []
         }
         this.handleMyTasksChanged = this.handleMyTasksChanged.bind(this);
+        this.parentHandleDelete = this.parentHandleDelete.bind(this);
     }
 
     parentHandleDelete(taskToDelete) {
@@ -30,6 +31,7 @@ class ToDoList extends React.Component {
     }
 
     handleMyTasksChanged(newTasks) {
+        console.log("ToDoList#handleMyTasksChanged - newTasks:", newTasks);
         this.setState({currentTasks: newTasks});
     }
 
@@ -46,6 +48,10 @@ class ToDoList extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    componentDidMount() {
+        console.log("ToDoList#componentDidMount - starting");
     }
 }
 

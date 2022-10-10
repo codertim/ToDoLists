@@ -3,15 +3,19 @@ import './App.css';
 import ToDoList from './ToDoList';
 
 function App() {
+  var myStyle = {
+    color: 'red'
+  };
+
   return (
     <div className="App">
       <header className="App-headerDELETED">
         <h1>React To Do List</h1>
       </header>
-      
+
       <ToDoList headervalue="My Do Do List"><div>Hello There!</div></ToDoList>
 
-      <div id="react-marketing" class="App-footer">
+      <div id="react-marketing" class="App-footer" style={myStyle}>
         <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -22,7 +26,7 @@ function App() {
              target="_blank"
              rel="noopener noreferrer"
           >
-          Learn React 123
+          Learn React
         </a>
       </div>
     </div>

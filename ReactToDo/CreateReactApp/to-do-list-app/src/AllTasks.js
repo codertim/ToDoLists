@@ -12,11 +12,12 @@ class AllTasks extends React.Component {
     render() {
         return (
             <div className="allTasks">
-                <hr />
-    <div style={ {fontStyle: 'italic'} }>All Current Tasks:</div>
-    <section style={ { marginBottom: '25px', paddingLeft: '50px'} }>
-        { this.props.someTasks.map((value, i) => <div key={i} >{value}</div>) }
-    </section>
+                <div style={ {fontStyle: 'italic'} }>All Current Tasks:</div>
+                <section style={ { marginBottom: '25px', paddingLeft: '50px'} }>
+                    <React.Fragment>
+                        { this.props.someTasks.map((value, i) => <div key={i} >{value}</div>) }
+                    </React.Fragment>
+                </section>
             </div>
         );
     }

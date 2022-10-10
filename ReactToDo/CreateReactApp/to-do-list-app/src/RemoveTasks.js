@@ -14,6 +14,7 @@ import React from "react";
                     this.state = {
                         tasksCanRemove: []
                     };
+                    this.handleRemoveTask = this.handleRemoveTask.bind(this);
                 }
 
                 componentDidMount() {
@@ -26,7 +27,11 @@ import React from "react";
                     console.log("RemoveTasks - component did mount - this.tasksCanRemove=", this.state.tasksCanRemove);
                 }
 
-                handleRemoveTask() {
+                handleRemoveTask(evt) {
+                    console.log("RemoveTasks#handleRemoveTask - evt:", evt);
+                    if (evt.shiftKey) {
+                        console.log("RemoveTasks#handleRemoveTask - shift key pressed");
+                    }
                     var taskToDelete = document.getElementById("delete-drop-down").value;
                     var indexToDelete = this.state.tasksCanRemove.indexOf(taskToDelete);
                     console.log("indexToDelete:" + (indexToDelete || ""));
@@ -36,14 +41,19 @@ import React from "react";
                     this.props.handleDelete(taskToDelete);   // notify parent
                 }
 
+                showRemoveHeader() {
+                    return <label>:: Remove Tasks</label>;
+                }
+
                 render() {
+                    var arr1 = [];   //[<label>testing1</label>, <label>testing2</label>];
                     return (
                         <div id="removeTasks">
                             <hr />
-                            :: Remove tasks
+                            {this.showRemoveHeader()}
                             <br />
                             <div style={{visibility: 'hidden'}}>
-                            { this.state.tasksCanRemove }
+                                { this.state.tasksCanRemove }
                             </div>
                             <select id="delete-drop-down">
                                 {
@@ -52,7 +62,8 @@ import React from "react";
                                     })
                                 }
                             </select>
-			    <button id='delete-button' onClick={this.handleRemoveTask} style={{marginLeft: '20px'}}>Remove</button> 
+			                <button id='delete-button' onClick={this.handleRemoveTask} style={{marginLeft: '20px'}}>Remove</button> 
+                            {arr1}
                         </div>
                     );
                 }

@@ -6,7 +6,6 @@ class NewTaskBox extends React.Component {
         this.state = {
             tasks: []
         }
-
         this.handleMyChange = this.handleMyChange.bind(this);
     }
 
@@ -15,10 +14,15 @@ class NewTaskBox extends React.Component {
         console.log("NewTaskBox - handleMyChange - theTasks= " + JSON.stringify(this.state.tasks));
         // console.log("this.state.currentTasks= " + JSON.stringify(this.state.currentTasks));
         var newTaskValue = document.getElementById("newtask").value;
-        document.getElementById("newtask").value = "";
+        this._inputNew.value = '';
+        this._inputNew.focus();
 
         if(newTaskValue) {
-            this.state.tasks.push(newTaskValue);
+            //this.state.tasks.push(newTaskValue);
+            this.setState((prevState) => {
+                return {tasks: [...prevState.tasks, newTaskValue]};
+            });
+            console.log("NewTaskBox#handleMyChange - this.state.tasks:", this.state.tasks);
             this.props.myTasksChanged(this.state.tasks);
         }
     }
@@ -28,9 +32,17 @@ class NewTaskBox extends React.Component {
     }
 
     render() {
+        var newTaskMsg = <label>Enter new task: </label>;
+        var self = this;
+
         return (
             <div className="newTaskBox">
-                Enter New Task: <input type="text" name="newtask" id="newtask" />
+                {newTaskMsg} <input type="text" name="newtask" id="newtask"
+                                    ref={
+                                        function(el) {
+                                            self._inputNew = el;
+                                        }
+                                    } />
                 <button id="addnewtask" onClick={this.handleMyChange} style={{marginLeft: "10px"}}>Add</button>
                 <br /><br /><br />
             </div>
