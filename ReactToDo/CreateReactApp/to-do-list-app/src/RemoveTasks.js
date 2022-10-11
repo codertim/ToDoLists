@@ -41,6 +41,16 @@ import React from "react";
                     this.props.handleDelete(taskToDelete);   // notify parent
                 }
 
+                componentDidUpdate(prevProps, prevState) {
+                    if (prevProps !== this.props) {
+                        console.log("##### RemoveTasks - componentDidUpdate - props have changed!");
+                        this.setState({ tasksCanRemove: this.props.theTasks.map( (val) => val)});
+                    }
+                    else {
+                        console.log("##### RemoveTasks - componentDidUpdate - props have NOT changed!");
+                    }
+                }
+
                 showRemoveHeader() {
                     return <label>:: Remove Tasks</label>;
                 }
