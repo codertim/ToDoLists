@@ -30,9 +30,12 @@ class ToDoList extends React.Component {
         this.setState({currentTasks: newTaskList});
     }
 
-    handleMyTasksChanged(newTasks) {
-        console.log("ToDoList#handleMyTasksChanged - newTasks:", newTasks);
-        this.setState({currentTasks: newTasks});
+    handleMyTasksChanged(newTask) {
+        console.log("ToDoList#handleMyTasksChanged - newTask:", newTask);
+        const newTaskList = this.state.currentTasks.concat(newTask);
+        //this.setState({currentTasks: newTasks});
+        this.setState({currentTasks: newTaskList});
+        console.log("ToDoList#handleMyTasksChanged - newTaskList:", newTaskList);
     }
 
     render() {

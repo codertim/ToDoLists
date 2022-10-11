@@ -3,27 +3,22 @@ import React from "react";
 class NewTaskBox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tasks: []
-        }
         this.handleMyChange = this.handleMyChange.bind(this);
     }
 
     handleMyChange(event) {
-        console.log("NewTaskBox - handleMyChange - myTasks= " + JSON.stringify(this.state.tasks));
-        console.log("NewTaskBox - handleMyChange - theTasks= " + JSON.stringify(this.state.tasks));
         // console.log("this.state.currentTasks= " + JSON.stringify(this.state.currentTasks));
         var newTaskValue = document.getElementById("newtask").value;
+        console.log("NewTaskBox#handleMyChange - NewTaskValue:", newTaskValue);
         this._inputNew.value = '';
         this._inputNew.focus();
 
         if(newTaskValue) {
             //this.state.tasks.push(newTaskValue);
-            this.setState((prevState) => {
-                return {tasks: [...prevState.tasks, newTaskValue]};
-            });
-            console.log("NewTaskBox#handleMyChange - this.state.tasks:", this.state.tasks);
-            this.props.myTasksChanged(this.state.tasks);
+            //this.setState((prevState) => {
+            //    return {tasks: [...prevState.tasks, newTaskValue]};
+            //});
+            this.props.myTasksChanged(newTaskValue);   // (this.state.tasks);
         }
     }
 
