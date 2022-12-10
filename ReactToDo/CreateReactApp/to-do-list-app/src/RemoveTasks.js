@@ -17,6 +17,11 @@ import React from "react";
                     this.handleRemoveTask = this.handleRemoveTask.bind(this);
                 }
 
+                shouldComponentUpdate(nextProps, nextState) {
+                    console.log("##### RemoveTasks#shouldComponentUpdate - starting");
+                    return true;
+                }
+
                 componentDidMount() {
                     console.log("RemoveTasks - componentDidMount - this.tasksCanRemove=", this.state.tasksCanRemove);
                     console.log("RemoveTasks - componentDidMount - this.props.theTasks=", this.props.theTasks);
@@ -67,8 +72,8 @@ import React from "react";
                             </div>
                             <select id="delete-drop-down">
                                 {
-                                    this.state.tasksCanRemove.map(function(val) {
-                                        return <option key={val}>{val}</option>
+                                    this.state.tasksCanRemove.map(function(val, i) {
+                                        return <option key={i}>{val}</option>
                                     })
                                 }
                             </select>

@@ -1,6 +1,6 @@
 import React from "react";
 
-class NewTaskBox extends React.Component {
+class NewTaskBox extends React.PureComponent {
     constructor(props) {
         super(props);
         this.handleMyChange = this.handleMyChange.bind(this);
