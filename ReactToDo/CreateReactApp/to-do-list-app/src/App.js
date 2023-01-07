@@ -10,10 +10,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-headerDELETED">
-        <h1>React To Do List</h1>
+        <h1>
+          {
+          // React To Do List
+          }
+        </h1>
       </header>
 
-      <ToDoList headervalue="My Do Do List"><div>Hello There!</div></ToDoList>
+      <ToDoList headervalue="My To Do List"><div>Hello There!</div></ToDoList>
 
       <div id="react-marketing" class="App-footer" style={myStyle}>
         <img src={logo} className="App-logo" alt="logo" />
